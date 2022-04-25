@@ -1,8 +1,10 @@
 import React from "react";
-import { TasksList } from "organisms/TasksList/TasksList";
-import s from "./styles.module.scss";
-import { SearchBar } from "molecules/SearchBar/SearchBar";
 import { Outlet } from "react-router-dom";
+
+import s from "./styles.module.scss";
+
+import { TasksList } from "organisms/TasksList/TasksList";
+import { SearchBar } from "molecules/SearchBar/SearchBar";
 
 export const MainPage = () => {
   if (window.innerWidth < 770) {

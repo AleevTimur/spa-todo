@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { Calendar } from "react-calendar";
+
 import s from "./styles.module.scss";
 import "./calendar.scss";
+
 import { parseDate } from "model/helpers/parseDate";
-import { useDispatch } from "react-redux";
 import { changeDeadlineDate } from "model/store/mainTasks/actionCreators";
 
 export const DeadlineChanger = ({ deadline, taskId }) => {
@@ -17,7 +19,9 @@ export const DeadlineChanger = ({ deadline, taskId }) => {
     dispatch(changeDeadlineDate(taskId, value));
     setIsOpenCalendar(false);
   };
+
   const { date, month, year } = parseDate(deadline);
+
   return (
     <>
       <button onClick={onToggleCalendar} className={s.button}>

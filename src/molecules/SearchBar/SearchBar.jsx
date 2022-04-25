@@ -1,23 +1,14 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
+
 import s from "./styles.module.scss";
 
 export const SearchBar = () => {
   const inputRef = useRef(null);
   const [isActive, setIsActive] = useState(false);
-  // useEffect(() => {
-  //   const slashListener = (e) => {
-  //     e.preventDefault();
-  //     if (e.key === "/" || e.key === "Enter") {
-  //       inputRef.current.focus();
-  //     } else if (e.key === "Escape") {
-  //       inputRef.current.blur();
-  //     }
-  //   };
-  //   window.addEventListener("keyup", slashListener);
-  //   return () => window.removeEventListener("keypress", slashListener);
-  // }, []);
+
   const onFocus = () => setIsActive(true);
   const onBlur = () => setIsActive(false);
+
   return (
     <div className={isActive ? `${s.root} ${s.root_active}` : s.root}>
       <input
@@ -34,8 +25,7 @@ export const SearchBar = () => {
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
-            strokeWidth={2}
-          >
+            strokeWidth={2}>
             <path
               strokeLinecap="round"
               strokeLinejoin="round"

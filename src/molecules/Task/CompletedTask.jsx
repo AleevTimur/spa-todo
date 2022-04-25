@@ -1,6 +1,7 @@
-import { Reorder } from "framer-motion";
 import React from "react";
+import { Reorder } from "framer-motion";
 import { Link } from "react-router-dom";
+
 import s from "./styles.module.scss";
 
 export const CompletedTask = ({
@@ -9,6 +10,7 @@ export const CompletedTask = ({
   titleOffset,
 }) => {
   const { id, title } = taskData;
+
   const onClickCheckbox = () => {
     handleChangeComplete(id);
   };
@@ -18,6 +20,7 @@ export const CompletedTask = ({
       handleChangeComplete(id);
     }
   };
+
   return (
     <Reorder.Item
       key={id}

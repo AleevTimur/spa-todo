@@ -1,19 +1,20 @@
 import React, { useRef } from "react";
 import { Reorder } from "framer-motion";
-import { Task } from "molecules/Task/Task";
-import s from "./styles.module.scss";
-import { CompletedTask } from "molecules/Task/CompletedTask";
 import { useDispatch } from "react-redux";
+
+import s from "./styles.module.scss";
+
+import { Task } from "molecules/Task/Task";
+import { CompletedTask } from "molecules/Task/CompletedTask";
+import { AddTaskButton } from "molecules/AddTaskButton/AddTaskButton";
 import {
   changeTaskCopmlete,
   deleteTask,
 } from "model/store/mainTasks/actionCreators";
 import { useGetTasks } from "model/hooks/useGetTasks";
-import { AddTaskButton } from "molecules/AddTaskButton/AddTaskButton";
 
-export const TasksList = ({ tasksData }) => {
+export const TasksList = () => {
   const doneTitleRef = useRef(null);
-  const titleOffset = doneTitleRef.current?.offsetTop;
   const dispatch = useDispatch();
   const {
     currentTasksList,
@@ -28,6 +29,8 @@ export const TasksList = ({ tasksData }) => {
   const handleChangeComplete = (id) => {
     dispatch(changeTaskCopmlete(id));
   };
+
+  const titleOffset = doneTitleRef.current?.offsetTop;
   return (
     <div className={s.root}>
       <header className={s.header}>

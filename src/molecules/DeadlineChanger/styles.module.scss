@@ -5,9 +5,13 @@
   border: none;
   border-radius: var(--radius-card);
   color: white;
+  word-wrap: break-word;
+  padding: 0 1rem;
+  cursor: pointer;
 }
 .calendarRoot {
   position: absolute;
   top: 0;
-  right: 20%;
+  right: 140px;
+  z-index: 3;
 }

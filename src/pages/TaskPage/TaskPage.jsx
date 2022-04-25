@@ -1,4 +1,11 @@
+import React from "react";
+import { useDispatch } from "react-redux";
+
+import s from "./styles.module.scss";
+
 import { EditableTitle } from "atoms/EditableTitle/EditableTitle";
+import { DeadlineChanger } from "molecules/DeadlineChanger/DeadlineChanger";
+import { MicroTasksList } from "organisms/MicroTasksList/MicroTasksList";
 import { useGetCurrentMicroTasks } from "model/hooks/useGetCurrentMicroTasks";
 import { useGetCurrentTaskPage } from "model/hooks/useGetCurrentTaskPage";
 import { useHotKeyListener } from "model/hooks/useHotKeyListener";
@@ -6,11 +13,6 @@ import {
   addMicroList,
   addMicroText,
 } from "model/store/microTasks/actionCreators";
-import { DeadlineChanger } from "molecules/DeadlineChanger/DeadlineChanger";
-import { MicroTasksList } from "organisms/MicroTasksList/MicroTasksList";
-import React from "react";
-import { useDispatch } from "react-redux";
-import s from "./styles.module.scss";
 
 export const TaskPage = () => {
   const dispatch = useDispatch();
