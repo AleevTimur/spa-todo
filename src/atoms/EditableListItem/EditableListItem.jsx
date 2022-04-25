@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
 
 import s from "./styles.module.scss";
@@ -41,4 +42,9 @@ export const EditableListItem = ({ defaultValue, taskId, pageId }) => {
       />
     </li>
   );
+};
+EditableListItem.propTypes = {
+  defaultValue: PropTypes.string,
+  taskId: PropTypes.string.isRequired,
+  pageId: PropTypes.string.isRequired,
 };
