@@ -66,6 +66,6 @@ export const Task = ({
 
 Task.propTypes = {
   taskData: PropTypes.object.isRequired,
-  handleDeleteTask: PropTypes.func,
-  handleDoneTask: PropTypes.func,
+  handleDeleteTask: PropTypes.func.isRequired,
+  handleDoneTask: PropTypes.func.isRequired,
 };
