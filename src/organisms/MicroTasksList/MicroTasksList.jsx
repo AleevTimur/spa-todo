@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import s from "./styles.module.scss";
 
@@ -27,4 +28,8 @@ export const MicroTasksList = ({ currentMicroTasks, currentPageId }) => {
         )}
     </div>
   );
+};
+MicroTasksList.propTypes = {
+  currentMicroTasks: PropTypes.array.isRequired,
+  currentPageId: PropTypes.string.isRequired,
 };
