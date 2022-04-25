@@ -3,8 +3,11 @@ import { Route, Routes } from "react-router-dom";
 import { MainPage } from "./pages/MainPage/MainPage";
 import { TaskPage } from "./pages/TaskPage/TaskPage";
 
+import { useWindowWidth } from "model/hooks/useWindowWidth";
+
 export const AppRouter = () => {
-  if (window.innerWidth < 770) {
+  const windowWidth = useWindowWidth();
+  if (windowWidth < 770) {
     return (
       <Routes>
         <Route path="/" element={<MainPage />}></Route>
