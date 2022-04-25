@@ -1,14 +1,3 @@
-// import { getTasksFromLocalStorage } from "model/helpers/getTasksFromLocalStorage";
-// import { uid } from "uid";
-// import {
-//   ADD_TASK,
-//   CHANGE_TITLE,
-//   CHANGE_TASK_COMPLETE,
-//   DELETE_TASK,
-//   ADD_INNER_LIST,
-//   EDIT_INNER_TASK,
-// } from "./actions";
-
 import {
   ADD_MICROLIST,
   ADD_MICROLIST_HERE,
