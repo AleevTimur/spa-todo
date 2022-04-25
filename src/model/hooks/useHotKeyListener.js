@@ -7,7 +7,6 @@ export const useHotKeyListener = (currentTaskPageId) => {
   useEffect(() => {
     const starKeyListener = function (e) {
       if (e.key === "*") {
-        console.log(e);
         e.preventDefault();
         dispatch(
           addMicroList({

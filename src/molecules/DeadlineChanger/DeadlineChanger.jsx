@@ -6,7 +6,7 @@ import { parseDate } from "model/helpers/parseDate";
 import { useDispatch } from "react-redux";
 import { changeDeadlineDate } from "model/store/mainTasks/actionCreators";
 
-export const CalendarButton = ({ deadline, taskId }) => {
+export const DeadlineChanger = ({ deadline, taskId }) => {
   const dispatch = useDispatch();
   const [isOpenCalendar, setIsOpenCalendar] = useState(false);
 
@@ -17,7 +17,6 @@ export const CalendarButton = ({ deadline, taskId }) => {
     dispatch(changeDeadlineDate(taskId, value));
     setIsOpenCalendar(false);
   };
-  console.log(deadline);
   const { date, month, year } = parseDate(deadline);
   return (
     <>

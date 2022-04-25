@@ -1,17 +1,14 @@
-import { EditableListItem } from "atoms/EditableListItem/EditableListItem";
-import { EditableTextarea } from "atoms/EditableTextarea/Editabletextarea";
 import { EditableTitle } from "atoms/EditableTitle/EditableTitle";
 import { useGetCurrentMicroTasks } from "model/hooks/useGetCurrentMicroTasks";
 import { useGetCurrentTaskPage } from "model/hooks/useGetCurrentTaskPage";
 import { useHotKeyListener } from "model/hooks/useHotKeyListener";
-import { changeTitle } from "model/store/mainTasks/actionCreators";
 import {
   addMicroList,
   addMicroText,
 } from "model/store/microTasks/actionCreators";
-import { CalendarButton } from "molecules/CalendarButton/CalendarButton";
+import { DeadlineChanger } from "molecules/DeadlineChanger/DeadlineChanger";
 import { MicroTasksList } from "organisms/MicroTasksList/MicroTasksList";
-import React, { useEffect, useState, useRef } from "react";
+import React from "react";
 import { useDispatch } from "react-redux";
 import s from "./styles.module.scss";
 
@@ -52,7 +49,7 @@ export const TaskPage = () => {
             />
           </div>
           <div className={s.headerButtonsContainer}>
-            <CalendarButton
+            <DeadlineChanger
               deadline={currentTaskPage.deadline}
               taskId={currentTaskPage.id}
             />
@@ -66,14 +63,12 @@ export const TaskPage = () => {
           <div className={s.buttonsGroup}>
             <button
               className={[s.button, s.button_left].join(" ")}
-              onClick={createList}
-            >
+              onClick={createList}>
               Add list
             </button>
             <button
               className={[s.button, s.button_right].join(" ")}
-              onClick={createTextarea}
-            >
+              onClick={createTextarea}>
               Add text
             </button>
           </div>
