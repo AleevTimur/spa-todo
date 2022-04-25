@@ -26,6 +26,6 @@ export const EditableTitle = ({ pageId, value }) => {
   );
 };
 EditableTitle.propTypes = {
-  defaultValue: PropTypes.string,
-  taskId: PropTypes.string.isRequired,
+  value: PropTypes.string,
+  pageId: PropTypes.string.isRequired,
 };
