@@ -1,7 +1,6 @@
 import { Reorder } from "framer-motion";
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
-import Calendar from "react-calendar";
 import { Link } from "react-router-dom";
 
 import s from "./styles.module.scss";
@@ -13,18 +12,12 @@ export const Task = ({
   titleOffset,
 }) => {
   const { id, title } = taskData;
-  const [date, onChange] = useState(new Date());
-  const [isCalendarOpen, toggleCalendar] = useState(false);
-  const handleToggleCalendar = () => {
-    toggleCalendar(!isCalendarOpen);
-  };
   const onDeleteTask = () => {
     handleDeleteTask(id);
   };
   const onDoneTask = () => {
     handleChangeComplete(id);
   };
-  const handleSetDate = (s) => {};
   const onDragEnd = (e) => {
     if (titleOffset < e.screenY) {
       handleChangeComplete(id);
@@ -39,8 +32,7 @@ export const Task = ({
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        onDragEnd={onDragEnd}
-      >
+        onDragEnd={onDragEnd}>
         <label className={s.label}>
           <input type="checkbox" className={s.defaultCheckbox} />
           <div className={s.checkbox} onClick={onDoneTask}></div>
@@ -49,24 +41,6 @@ export const Task = ({
           {title}
         </Link>
         <div className={s.buttonsGroup}>
-          {/* <button className={s.button} onClick={handleToggleCalendar}>
-            <div className={s.iconWrapper}>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className={s.icon}
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2}
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                />
-              </svg>
-            </div>
-          </button> */}
           <button className={s.button} onClick={onDeleteTask}>
             <div className={s.iconWrapper}>
               <svg
@@ -75,8 +49,7 @@ export const Task = ({
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
-                strokeWidth={2}
-              >
+                strokeWidth={2}>
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -87,14 +60,6 @@ export const Task = ({
           </button>
         </div>
       </Reorder.Item>
-      {isCalendarOpen && (
-        <Calendar
-          onChange={onChange}
-          value={date}
-          className={s.calendar}
-          onClickDay={handleSetDate}
-        />
-      )}
     </>
   );
 };
