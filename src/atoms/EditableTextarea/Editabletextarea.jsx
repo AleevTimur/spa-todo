@@ -1,13 +1,16 @@
+import React, { useLayoutEffect, useRef } from "react";
+import { useDispatch } from "react-redux";
+
+import s from "./styles.module.scss";
+
 import {
   deleteMicroTask,
   editMicroTask,
 } from "model/store/microTasks/actionCreators";
-import React, { useLayoutEffect, useRef, useState } from "react";
-import { useDispatch } from "react-redux";
-import s from "./styles.module.scss";
 
 export const EditableTextarea = ({ defaultValue, taskId, ...props }) => {
   const dispatch = useDispatch();
+
   const onChange = (e) => {
     const value = e.target.value;
     dispatch(editMicroTask({ value, taskId }));
@@ -18,12 +21,13 @@ export const EditableTextarea = ({ defaultValue, taskId, ...props }) => {
     }
   };
 
-  const textareaRef = useRef(null);
   useLayoutEffect(() => {
     textareaRef.current.style.height = 0;
     textareaRef.current.style.height =
       textareaRef.current.scrollHeight + 5 + "px";
   });
+
+  const textareaRef = useRef(null);
 
   return (
     <textarea
@@ -33,7 +37,6 @@ export const EditableTextarea = ({ defaultValue, taskId, ...props }) => {
       onChange={onChange}
       defaultValue={defaultValue}
       onKeyDown={onDelete}
-      {...props}
-    ></textarea>
+      {...props}></textarea>
   );
 };

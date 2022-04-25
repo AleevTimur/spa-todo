@@ -2,7 +2,6 @@ import {
   addMicroListHere,
   deleteMicroTask,
   editMicroTask,
-  addMicroList,
 } from "model/store/microTasks/actionCreators";
 import React from "react";
 import { useDispatch } from "react-redux";
@@ -10,11 +9,11 @@ import s from "./styles.module.scss";
 
 export const EditableListItem = ({ defaultValue, taskId, pageId }) => {
   const dispatch = useDispatch();
+
   const onChange = (e) => {
     const value = e.target.value;
     dispatch(editMicroTask({ value, taskId }));
   };
-
   const onKeyDown = (e) => {
     if (e.key === "Enter") {
       dispatch(

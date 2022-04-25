@@ -1,14 +1,17 @@
-import { changeTitle } from "model/store/mainTasks/actionCreators";
 import React from "react";
 import { useDispatch } from "react-redux";
 import s from "./styles.module.scss";
 
+import { changeTitle } from "model/store/mainTasks/actionCreators";
+
 export const EditableTitle = ({ pageId, value }) => {
   const dispatch = useDispatch();
+
   const onChange = (e) => {
     const value = e.target.value;
     dispatch(changeTitle(pageId, value));
   };
+
   return (
     <input
       autoFocus

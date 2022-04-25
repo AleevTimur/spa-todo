@@ -1,6 +1,7 @@
 import React from "react";
-import s from "./styles.module.scss";
 import PropTypes from "prop-types";
+
+import s from "./styles.module.scss";
 
 export const InputField = ({ value, onChange, onPressEnter, ...props }) => {
   const onKeyPress = (e) => {
@@ -8,6 +9,7 @@ export const InputField = ({ value, onChange, onPressEnter, ...props }) => {
       onPressEnter();
     }
   };
+
   return (
     <input
       type="text"
