@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Reorder } from "framer-motion";
 import { Link } from "react-router-dom";
 
@@ -38,4 +39,10 @@ export const CompletedTask = ({
       </Link>
     </Reorder.Item>
   );
+};
+
+CompletedTask.propTypes = {
+  taskData: PropTypes.object.isRequired,
+  handleChangeComplete: PropTypes.func.isRequired,
+  titleOffset: PropTypes.number.isRequired,
 };
