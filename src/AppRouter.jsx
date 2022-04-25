@@ -10,7 +10,7 @@ export const AppRouter = () => {
   if (windowWidth < 770) {
     return (
       <Routes>
-        <Route path="/" element={<MainPage />}></Route>
+        <Route path="/" element={<MainPage />} />
 
         <Route path="/task/:id" element={<TaskPage />} />
       </Routes>
