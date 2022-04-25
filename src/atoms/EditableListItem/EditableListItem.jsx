@@ -1,11 +1,13 @@
+import React from "react";
+import { useDispatch } from "react-redux";
+
+import s from "./styles.module.scss";
+
 import {
   addMicroListHere,
   deleteMicroTask,
   editMicroTask,
 } from "model/store/microTasks/actionCreators";
-import React from "react";
-import { useDispatch } from "react-redux";
-import s from "./styles.module.scss";
 
 export const EditableListItem = ({ defaultValue, taskId, pageId }) => {
   const dispatch = useDispatch();
