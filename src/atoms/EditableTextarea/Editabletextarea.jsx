@@ -1,5 +1,6 @@
 import React, { useLayoutEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
+import PropTypes from "prop-types";
 
 import s from "./styles.module.scss";
 
@@ -8,7 +9,7 @@ import {
   editMicroTask,
 } from "model/store/microTasks/actionCreators";
 
-export const EditableTextarea = ({ defaultValue, taskId, ...props }) => {
+export const EditableTextarea = ({ defaultValue, taskId }) => {
   const dispatch = useDispatch();
 
   const onChange = (e) => {
@@ -37,6 +38,11 @@ export const EditableTextarea = ({ defaultValue, taskId, ...props }) => {
       onChange={onChange}
       defaultValue={defaultValue}
       onKeyDown={onDelete}
-      {...props}></textarea>
+    />
   );
+};
+
+EditableTextarea.propTypes = {
+  defaultValue: PropTypes.string,
+  taskId: PropTypes.string.isRequired,
 };
