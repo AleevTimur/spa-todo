@@ -16,9 +16,9 @@ export const deleteTask = (id) => ({
   payload: id,
 });
 
-export const changeTaskCopmlete = (id, value) => ({
+export const changeTaskCopmlete = (id) => ({
   type: CHANGE_TASK_COMPLETE,
-  payload: { id, value },
+  payload: id,
 });
 
 export const changeTitle = (id, value) => ({
