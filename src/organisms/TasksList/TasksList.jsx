@@ -39,8 +39,7 @@ export const TasksList = ({ tasksData }) => {
         values={currentTasksList}
         onReorder={setCurrentTasksList}
         layoutScroll
-        className={s.list}
-      >
+        className={s.list}>
         {currentTasksList.map((taskData) => (
           <Task
             taskData={taskData}
@@ -58,13 +57,13 @@ export const TasksList = ({ tasksData }) => {
         axis="y"
         values={completedTasksList}
         onReorder={setCompletedTasksList}
-        className={s.list}
-      >
+        className={s.list}>
         {completedTasksList.map((taskData) => (
           <CompletedTask
             taskData={taskData}
             key={taskData.id}
             handleChangeComplete={handleChangeComplete}
+            titleOffset={titleOffset}
           />
         ))}
       </Reorder.Group>

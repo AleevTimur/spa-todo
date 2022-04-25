@@ -19,7 +19,7 @@ export const Task = ({
     handleChangeComplete(id);
   };
   const onDragEnd = (e) => {
-    if (titleOffset < e.screenY) {
+    if (titleOffset < e.y + 100) {
       handleChangeComplete(id);
     }
   };
