@@ -1,0 +1,18 @@
+.wrapper {
+  padding: 40px;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 30% auto;
+  grid-template-rows: 100%;
+  column-gap: var(--gap-m);
+  @media (max-width: 770px) {
+    display: block;
+  }
+}
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  row-gap: var(--gap-s);
+}

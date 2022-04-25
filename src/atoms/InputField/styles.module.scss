@@ -1,0 +1,12 @@
+.input {
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-card);
+  font: inherit;
+  color: inherit;
+  outline: none;
+}
+.input:focus {
+  border: 1px solid var(--color-accent);
+}

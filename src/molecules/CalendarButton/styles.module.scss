@@ -1,0 +1,13 @@
+.button {
+  height: calc(100% - var(--gap-s));
+  width: 100%;
+  background-color: var(--color-card);
+  border: none;
+  border-radius: var(--radius-card);
+  color: white;
+}
+.calendarRoot {
+  position: absolute;
+  top: 0;
+  right: 20%;
+}
