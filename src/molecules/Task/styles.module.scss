@@ -32,6 +32,13 @@
 }
 .checkboxDone {
   background-color: var(--color-accent);
+  position: absolute;
+  top: 0.1rem;
+  left: 0;
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 50%;
+  border: 1px solid var(--color-accent);
 }
 .calendar {
   position: absolute;

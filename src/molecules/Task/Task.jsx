@@ -4,23 +4,30 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 import s from "./styles.module.scss";
+import {
+  changeTaskCopmlete,
+  deleteTask,
+} from "model/store/mainTasks/actionCreators";
+import { useDispatch } from "react-redux";
 
-export const Task = ({
-  taskData,
-  handleDeleteTask,
-  handleChangeComplete,
-  titleOffset,
-}) => {
-  const { id, title } = taskData;
+const { checkbox, checkboxDone } = s;
+
+export const Task = ({ taskData, titleOffset }) => {
+  const dispatch = useDispatch();
+  const { id, title, isCompleted } = taskData;
+
   const onDeleteTask = () => {
-    handleDeleteTask(id);
+    dispatch(deleteTask(id));
   };
   const onDoneTask = () => {
-    handleChangeComplete(id);
+    dispatch(changeTaskCopmlete(id));
   };
+
   const onDragEnd = (e) => {
-    if (titleOffset < e.y + 100) {
-      handleChangeComplete(id);
+    const isToggleToCompleted = !isCompleted && titleOffset < e.y - 100;
+    const isUndoCompleted = isCompleted && titleOffset > e.y - 100;
+    if (isToggleToCompleted || isUndoCompleted) {
+      dispatch(changeTaskCopmlete(id));
     }
   };
   return (
@@ -35,10 +42,12 @@ export const Task = ({
         onDragEnd={onDragEnd}>
         <label className={s.label}>
           <input type="checkbox" className={s.defaultCheckbox} />
-          <div className={s.checkbox} onClick={onDoneTask}></div>
+          <div
+            className={isCompleted ? checkboxDone : checkbox}
+            onClick={onDoneTask}></div>
         </label>
         <Link to={`/task/${id}`} className={s.title}>
-          {title}
+          {title || "New task"}
         </Link>
         <div className={s.buttonsGroup}>
           <button className={s.button} onClick={onDeleteTask}>
@@ -66,7 +75,5 @@ export const Task = ({
 
 Task.propTypes = {
   taskData: PropTypes.object.isRequired,
-  handleDeleteTask: PropTypes.func.isRequired,
-  handleChangeComplete: PropTypes.func.isRequired,
   titleOffset: PropTypes.number.isRequired,
 };

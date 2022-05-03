@@ -1,34 +1,20 @@
 import React, { useRef } from "react";
 import { Reorder } from "framer-motion";
-import { useDispatch } from "react-redux";
 
 import s from "./styles.module.scss";
 
 import { Task } from "molecules/Task/Task";
-import { CompletedTask } from "molecules/Task/CompletedTask";
 import { AddTaskButton } from "molecules/AddTaskButton/AddTaskButton";
-import {
-  changeTaskCopmlete,
-  deleteTask,
-} from "model/store/mainTasks/actionCreators";
 import { useGetTasks } from "model/hooks/useGetTasks";
 
 export const TasksList = () => {
   const doneTitleRef = useRef(null);
-  const dispatch = useDispatch();
   const {
     currentTasksList,
     setCurrentTasksList,
     completedTasksList,
     setCompletedTasksList,
   } = useGetTasks();
-
-  const handleDeleteTask = (id) => {
-    dispatch(deleteTask(id));
-  };
-  const handleChangeComplete = (id) => {
-    dispatch(changeTaskCopmlete(id));
-  };
 
   const titleOffset = doneTitleRef.current?.offsetTop;
   return (
@@ -47,8 +33,6 @@ export const TasksList = () => {
           <Task
             taskData={taskData}
             key={taskData.id}
-            handleDeleteTask={handleDeleteTask}
-            handleChangeComplete={handleChangeComplete}
             titleOffset={titleOffset}
           />
         ))}
@@ -62,10 +46,9 @@ export const TasksList = () => {
         onReorder={setCompletedTasksList}
         className={s.list}>
         {completedTasksList.map((taskData) => (
-          <CompletedTask
+          <Task
             taskData={taskData}
             key={taskData.id}
-            handleChangeComplete={handleChangeComplete}
             titleOffset={titleOffset}
           />
         ))}
