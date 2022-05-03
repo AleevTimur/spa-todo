@@ -16,7 +16,6 @@ export const microTasks = (state = initialState, action) => {
   const currentPageId = action.payload?.pageId;
   switch (action.type) {
     case ADD_MICROLIST:
-      console.log("add list", state);
       const newMicroTask = {
         id: action.payload.id,
         tag: action.payload.tag,

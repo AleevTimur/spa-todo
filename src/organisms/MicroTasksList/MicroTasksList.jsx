@@ -7,7 +7,6 @@ import { EditableListItem } from "atoms/EditableListItem/EditableListItem";
 import { EditableTextarea } from "atoms/EditableTextarea/EditableTextarea";
 
 export const MicroTasksList = ({ currentMicroTasks, currentPageId }) => {
-  console.log(currentMicroTasks);
   return (
     <div className={s.root}>
       {currentMicroTasks &&

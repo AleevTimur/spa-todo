@@ -26,9 +26,9 @@ export const Task = ({ taskData, titleOffset, handleChangeOrder }) => {
   };
 
   const onDragEnd = (e) => {
-    const isToggleToCompleted = !isCompleted && titleOffset < e.y - 100;
-    const isUndoCompleted = isCompleted && titleOffset > e.y - 100;
-    if (isToggleToCompleted || isUndoCompleted) {
+    const isToggleCompleted = !isCompleted && titleOffset < e.y - 215;
+    const isUndoCompleted = isCompleted && titleOffset > e.y + 215;
+    if (isToggleCompleted || isUndoCompleted) {
       dispatch(changeTaskCopmlete(id));
     }
     handleChangeOrder();
