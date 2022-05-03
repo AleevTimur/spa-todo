@@ -15,7 +15,7 @@ export const EditableListItem = ({ defaultValue, taskId, pageId }) => {
 
   const onChange = (e) => {
     const value = e.target.value;
-    dispatch(editMicroTask({ value, taskId }));
+    dispatch(editMicroTask({ value, taskId, pageId }));
   };
   const onKeyDown = (e) => {
     if (e.key === "Enter") {
@@ -27,7 +27,7 @@ export const EditableListItem = ({ defaultValue, taskId, pageId }) => {
         })
       );
     } else if (e.keyCode === 8 && e.target.value === "") {
-      dispatch(deleteMicroTask(taskId));
+      dispatch(deleteMicroTask(taskId, pageId));
     }
   };
 

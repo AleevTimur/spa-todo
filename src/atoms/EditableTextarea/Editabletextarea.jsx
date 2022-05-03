@@ -9,16 +9,16 @@ import {
   editMicroTask,
 } from "model/store/microTasks/actionCreators";
 
-export const EditableTextarea = ({ defaultValue, taskId }) => {
+export const EditableTextarea = ({ defaultValue, taskId, pageId }) => {
   const dispatch = useDispatch();
 
   const onChange = (e) => {
     const value = e.target.value;
-    dispatch(editMicroTask({ value, taskId }));
+    dispatch(editMicroTask({ value, taskId, pageId }));
   };
   const onDelete = (e) => {
     if (e.keyCode === 8 && e.target.value === "") {
-      dispatch(deleteMicroTask(taskId));
+      dispatch(deleteMicroTask(taskId, pageId));
     }
   };
 

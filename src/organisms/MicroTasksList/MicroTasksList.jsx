@@ -7,6 +7,7 @@ import { EditableListItem } from "atoms/EditableListItem/EditableListItem";
 import { EditableTextarea } from "atoms/EditableTextarea/EditableTextarea";
 
 export const MicroTasksList = ({ currentMicroTasks, currentPageId }) => {
+  console.log(currentMicroTasks);
   return (
     <div className={s.root}>
       {currentMicroTasks &&
@@ -23,6 +24,7 @@ export const MicroTasksList = ({ currentMicroTasks, currentPageId }) => {
               defaultValue={microTask.value}
               taskId={microTask.id}
               key={microTask.id}
+              pageId={currentPageId}
             />
           )
         )}
@@ -30,6 +32,6 @@ export const MicroTasksList = ({ currentMicroTasks, currentPageId }) => {
   );
 };
 MicroTasksList.propTypes = {
-  currentMicroTasks: PropTypes.array.isRequired,
+  currentMicroTasks: PropTypes.array,
   currentPageId: PropTypes.string.isRequired,
 };

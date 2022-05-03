@@ -38,12 +38,12 @@ export const addMicroText = ({ pageId, value }) => ({
   },
 });
 
-export const editMicroTask = ({ value, taskId }) => ({
+export const editMicroTask = ({ value, taskId, pageId }) => ({
   type: EDIT_MICROTASK,
-  payload: { value, taskId },
+  payload: { value, taskId, pageId },
 });
 
-export const deleteMicroTask = (taskId) => ({
+export const deleteMicroTask = (taskId, pageId) => ({
   type: DELETE_MICROTASK,
-  payload: { taskId },
+  payload: { taskId, pageId },
 });

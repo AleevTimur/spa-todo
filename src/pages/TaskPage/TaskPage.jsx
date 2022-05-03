@@ -6,9 +6,9 @@ import s from "./styles.module.scss";
 import { EditableTitle } from "atoms/EditableTitle/EditableTitle";
 import { DeadlineChanger } from "molecules/DeadlineChanger/DeadlineChanger";
 import { MicroTasksList } from "organisms/MicroTasksList/MicroTasksList";
-import { useGetCurrentMicroTasks } from "model/hooks/useGetCurrentMicroTasks";
 import { useGetCurrentTaskPage } from "model/hooks/useGetCurrentTaskPage";
 import { useHotKeyListener } from "model/hooks/useHotKeyListener";
+import { useGetMicroTasks } from "model/hooks/useGetMicroTasks";
 import {
   addMicroList,
   addMicroText,
@@ -17,7 +17,7 @@ import {
 export const TaskPage = () => {
   const dispatch = useDispatch();
   const currentTaskPage = useGetCurrentTaskPage();
-  const currentMicroTasks = useGetCurrentMicroTasks(currentTaskPage?.id);
+  const currentMicroTasks = useGetMicroTasks(currentTaskPage?.id);
   useHotKeyListener(currentTaskPage?.id);
 
   const createList = () => {
