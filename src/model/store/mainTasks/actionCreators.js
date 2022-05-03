@@ -4,6 +4,7 @@ import {
   CHANGE_TASK_COMPLETE,
   DELETE_TASK,
   CHANGE_DEADLINE_DATE,
+  CHANGE_ORDER,
 } from "./actions";
 
 export const addTask = (title) => ({
@@ -29,4 +30,9 @@ export const changeTitle = (id, value) => ({
 export const changeDeadlineDate = (id, value) => ({
   type: CHANGE_DEADLINE_DATE,
   payload: { id, value },
+});
+
+export const changeOrder = (tasksArray) => ({
+  type: CHANGE_ORDER,
+  payload: tasksArray,
 });

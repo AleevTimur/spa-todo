@@ -4,6 +4,7 @@ import {
   CHANGE_TASK_COMPLETE,
   DELETE_TASK,
   CHANGE_DEADLINE_DATE,
+  CHANGE_ORDER,
 } from "./actions";
 
 const listFromLocalStorage = JSON.parse(localStorage.getItem("mainTasks"));
@@ -45,6 +46,11 @@ export const mainTasks = (state = initialState, action) => {
           }
           return task;
         }),
+      };
+    case CHANGE_ORDER:
+      return {
+        ...state,
+        list: action.payload,
       };
     case CHANGE_DEADLINE_DATE:
       return {
