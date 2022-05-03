@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useRef, useState } from "react";
 import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
 import { Calendar } from "react-calendar";
@@ -8,14 +8,21 @@ import "./calendar.scss";
 
 import { parseDate } from "model/helpers/parseDate";
 import { changeDeadlineDate } from "model/store/mainTasks/actionCreators";
+import { useOnClickOutside } from "model/hooks/useOnClickOutside";
 
 export const DeadlineChanger = ({ deadline, taskId }) => {
+  const calendarRef = useRef(null);
   const dispatch = useDispatch();
   const [isOpenCalendar, setIsOpenCalendar] = useState(false);
 
   const onToggleCalendar = () => {
     setIsOpenCalendar(!isOpenCalendar);
   };
+  const onCloseCalendar = () => {
+    setIsOpenCalendar(false);
+  };
+  useOnClickOutside(calendarRef, useCallback(onCloseCalendar, []));
+
   const onChangeDate = (value) => {
     dispatch(changeDeadlineDate(taskId, value.toISOString()));
     setIsOpenCalendar(false);
@@ -25,7 +32,7 @@ export const DeadlineChanger = ({ deadline, taskId }) => {
 
   return (
     <>
-      <button onClick={onToggleCalendar} className={s.button}>
+      <button onClick={onToggleCalendar} className={s.button} ref={calendarRef}>
         {`${date} ${month} ${year}`}
       </button>
       {isOpenCalendar && (
