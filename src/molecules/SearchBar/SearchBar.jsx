@@ -1,17 +1,32 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import s from "./styles.module.scss";
 
-export const SearchBar = () => {
+export const SearchBar = ({ handleSearchTasks }) => {
   const inputRef = useRef(null);
   const [isActive, setIsActive] = useState(false);
+  const [searchValue, setSearchValue] = useState("");
 
-  const onFocus = () => setIsActive(true);
-  const onBlur = () => setIsActive(false);
+  useEffect(() => {
+    handleSearchTasks(searchValue.toLowerCase());
+  }, [searchValue]);
+
+  const onChange = (e) => {
+    const value = e.target.value;
+    setSearchValue(value);
+  };
+  const onFocus = () => {
+    setIsActive(true);
+  };
+  const onBlur = () => {
+    setIsActive(false);
+  };
 
   return (
     <div className={isActive ? `${s.root} ${s.root_active}` : s.root}>
       <input
+        value={searchValue}
+        onChange={onChange}
         ref={inputRef}
         className={s.input}
         onFocus={onFocus}

@@ -1,5 +1,5 @@
 import React from "react";
-import { Reorder } from "framer-motion";
+import { Reorder, useDragControls } from "framer-motion";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
@@ -12,8 +12,10 @@ import { useDispatch } from "react-redux";
 
 const { checkbox, checkboxDone } = s;
 
-export const Task = ({ taskData, titleOffset }) => {
+export const Task = ({ taskData, titleOffset, handleChangeOrder }) => {
   const dispatch = useDispatch();
+  const controls = useDragControls();
+
   const { id, title, isCompleted } = taskData;
 
   const onDeleteTask = () => {
@@ -29,7 +31,10 @@ export const Task = ({ taskData, titleOffset }) => {
     if (isToggleToCompleted || isUndoCompleted) {
       dispatch(changeTaskCopmlete(id));
     }
+    handleChangeOrder();
   };
+
+  const dragItem = (e) => controls.start(e);
   return (
     <>
       <Reorder.Item
@@ -39,8 +44,12 @@ export const Task = ({ taskData, titleOffset }) => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        onDragEnd={onDragEnd}>
-        <label className={s.label}>
+        dragControls={controls}
+        dragListener={false}>
+        <label
+          className={s.label}
+          onPointerDown={dragItem}
+          onDragEnd={onDragEnd}>
           <input type="checkbox" className={s.defaultCheckbox} />
           <div
             className={isCompleted ? checkboxDone : checkbox}
@@ -75,5 +84,5 @@ export const Task = ({ taskData, titleOffset }) => {
 
 Task.propTypes = {
   taskData: PropTypes.object.isRequired,
-  titleOffset: PropTypes.number.isRequired,
+  titleOffset: PropTypes.number,
 };

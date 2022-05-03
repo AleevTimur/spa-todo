@@ -8,6 +8,7 @@
   grid-template-columns: min-content 1fr min-content;
   column-gap: 1rem;
   align-items: center;
+  user-select: none;
 }
 .title {
   color: inherit;
@@ -15,7 +16,11 @@
   user-select: none;
 }
 .label {
+  cursor: grab;
   position: relative;
+}
+.label:active {
+  cursor: grabbing;
 }
 .defaultCheckbox {
   appearance: none;

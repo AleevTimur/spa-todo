@@ -6,8 +6,11 @@ import s from "./styles.module.scss";
 import { Task } from "molecules/Task/Task";
 import { AddTaskButton } from "molecules/AddTaskButton/AddTaskButton";
 import { useGetTasks } from "model/hooks/useGetTasks";
+import { useDispatch } from "react-redux";
+import { changeOrder } from "model/store/mainTasks/actionCreators";
 
 export const TasksList = () => {
+  const dispatch = useDispatch();
   const doneTitleRef = useRef(null);
   const {
     currentTasksList,
@@ -15,6 +18,10 @@ export const TasksList = () => {
     completedTasksList,
     setCompletedTasksList,
   } = useGetTasks();
+
+  const handleChangeOrder = () => {
+    dispatch(changeOrder([...currentTasksList, ...completedTasksList]));
+  };
 
   const titleOffset = doneTitleRef.current?.offsetTop;
   return (
@@ -34,6 +41,7 @@ export const TasksList = () => {
             taskData={taskData}
             key={taskData.id}
             titleOffset={titleOffset}
+            handleChangeOrder={handleChangeOrder}
           />
         ))}
       </Reorder.Group>
