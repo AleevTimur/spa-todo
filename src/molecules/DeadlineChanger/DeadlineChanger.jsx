@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
 import { Calendar } from "react-calendar";
@@ -17,7 +17,7 @@ export const DeadlineChanger = ({ deadline, taskId }) => {
     setIsOpenCalendar(!isOpenCalendar);
   };
   const onChangeDate = (value) => {
-    dispatch(changeDeadlineDate(taskId, value));
+    dispatch(changeDeadlineDate(taskId, value.toISOString()));
     setIsOpenCalendar(false);
   };
 
