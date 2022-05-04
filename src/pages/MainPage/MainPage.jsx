@@ -9,6 +9,7 @@ import { SearchList } from "organisms/TasksList/SearchList";
 import { SortButton } from "molecules/SortButton/SortButton";
 
 export const MainPage = () => {
+  const [modalWidth, setModalWidth] = useState(0);
   const [isSearchActive, setIsSearchActive] = useState(false);
   const [searchValue, setSearchValue] = useState("");
 
@@ -19,6 +20,9 @@ export const MainPage = () => {
       setIsSearchActive(false);
     }
     setSearchValue(value);
+  };
+  const handleSetModalWidth = (searchFieldWidth) => {
+    setModalWidth(searchFieldWidth);
   };
 
   if (window.innerWidth < 770) {
@@ -41,8 +45,11 @@ export const MainPage = () => {
     <div className={s.wrapper}>
       <section className={s.sidebar}>
         <header className={s.header}>
-          <SearchBar handleSearchTasks={handleSearchTasks} />
-          <SortButton />
+          <SearchBar
+            handleSearchTasks={handleSearchTasks}
+            handleSetModalWidth={handleSetModalWidth}
+          />
+          <SortButton modalWidth={modalWidth} />
         </header>
         {isSearchActive ? (
           <SearchList searchValue={searchValue} />

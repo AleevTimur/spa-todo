@@ -1,9 +1,12 @@
+import cn from "classnames";
 import React, { useEffect, useRef, useState } from "react";
 
 import s from "./styles.module.scss";
+const { root, root_active } = s;
 
-export const SearchBar = ({ handleSearchTasks }) => {
-  const inputRef = useRef(null);
+export const SearchBar = ({ handleSearchTasks, handleSetModalWidth }) => {
+  const searchFieldRef = useRef(null);
+  handleSetModalWidth(searchFieldRef.current?.clientWidth);
   const [isActive, setIsActive] = useState(false);
   const [searchValue, setSearchValue] = useState("");
 
@@ -23,11 +26,14 @@ export const SearchBar = ({ handleSearchTasks }) => {
   };
 
   return (
-    <div className={isActive ? `${s.root} ${s.root_active}` : s.root}>
+    <div
+      className={cn(root, {
+        [root_active]: isActive,
+      })}
+      ref={searchFieldRef}>
       <input
         value={searchValue}
         onChange={onChange}
-        ref={inputRef}
         className={s.input}
         onFocus={onFocus}
         onBlur={onBlur}
