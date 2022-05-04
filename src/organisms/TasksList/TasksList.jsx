@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Reorder } from "framer-motion";
 
 import s from "./styles.module.scss";
@@ -23,7 +23,7 @@ export const TasksList = () => {
     dispatch(changeOrder([...currentTasksList, ...completedTasksList]));
   };
 
-  const titleOffset = doneTitleRef.current?.offsetTop;
+  const titleHeightPosition = doneTitleRef.current?.getBoundingClientRect().y;
   return (
     <div className={s.root}>
       <header className={s.header}>
@@ -40,7 +40,7 @@ export const TasksList = () => {
           <Task
             taskData={taskData}
             key={taskData.id}
-            titleOffset={titleOffset}
+            titleHeightPosition={titleHeightPosition}
             handleChangeOrder={handleChangeOrder}
           />
         ))}
@@ -57,7 +57,8 @@ export const TasksList = () => {
           <Task
             taskData={taskData}
             key={taskData.id}
-            titleOffset={titleOffset}
+            titleHeightPosition={titleHeightPosition}
+            handleChangeOrder={handleChangeOrder}
           />
         ))}
       </Reorder.Group>

@@ -12,7 +12,7 @@ import { useDispatch } from "react-redux";
 
 const { checkbox, checkboxDone } = s;
 
-export const Task = ({ taskData, titleOffset, handleChangeOrder }) => {
+export const Task = ({ taskData, titleHeightPosition, handleChangeOrder }) => {
   const dispatch = useDispatch();
   const controls = useDragControls();
 
@@ -26,15 +26,13 @@ export const Task = ({ taskData, titleOffset, handleChangeOrder }) => {
   };
 
   const onDragEnd = (e) => {
-    const isToggleCompleted = !isCompleted && titleOffset < e.y - 215;
-    const isUndoCompleted = isCompleted && titleOffset > e.y + 215;
-    if (isToggleCompleted || isUndoCompleted) {
-      dispatch(changeTaskCopmlete(id));
+    if (!isCompleted && e.y > titleHeightPosition) {
+      onDoneTask();
+    } else if (isCompleted && e.y < titleHeightPosition) {
+      onDoneTask();
     }
     handleChangeOrder();
   };
-
-  const dragItem = (e) => controls.start(e);
   return (
     <>
       <Reorder.Item
@@ -45,15 +43,13 @@ export const Task = ({ taskData, titleOffset, handleChangeOrder }) => {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         dragControls={controls}
-        dragListener={false}>
-        <label
-          className={s.label}
-          onPointerDown={dragItem}
-          onDragEnd={onDragEnd}>
+        dragListener={false}
+        onDragEnd={onDragEnd}>
+        <label className={s.label} onPointerDown={(e) => controls.start(e)}>
           <input type="checkbox" className={s.defaultCheckbox} />
           <div
             className={isCompleted ? checkboxDone : checkbox}
-            onClick={onDoneTask}></div>
+            onDoubleClick={onDoneTask}></div>
         </label>
         <Link to={`/task/${id}`} className={s.title}>
           {title || "New task"}
@@ -84,5 +80,5 @@ export const Task = ({ taskData, titleOffset, handleChangeOrder }) => {
 
 Task.propTypes = {
   taskData: PropTypes.object.isRequired,
-  titleOffset: PropTypes.number,
+  titleOffset: PropTypes.object,
 };
