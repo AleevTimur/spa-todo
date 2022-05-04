@@ -1,12 +1,16 @@
-import { combineReducers, createStore } from "redux";
+import { applyMiddleware, combineReducers, createStore } from "redux";
 import { mainTasks } from "./mainTasks";
 import { microTasks } from "./microTasks";
+import { deleteMicroTasks } from "./deleteMicroTasks";
 
 const rootReducer = combineReducers({
   mainTasks,
   microTasks,
 });
-export const store = createStore(rootReducer);
+export const store = createStore(
+  rootReducer,
+  applyMiddleware(deleteMicroTasks)
+);
 
 store.subscribe(() => {
   const state = store.getState();
