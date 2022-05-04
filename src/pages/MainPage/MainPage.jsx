@@ -24,7 +24,9 @@ export const MainPage = () => {
     return (
       <div className={s.wrapper}>
         <section className={s.sidebar}>
-          <SearchBar handleToggleSearchList={handleSearchTasks} />
+          <header className={s.header}>
+            <SearchBar handleToggleSearchList={handleSearchTasks} />
+          </header>
           {isSearchActive ? (
             <SearchList searchValue={searchValue} />
           ) : (
@@ -37,7 +39,10 @@ export const MainPage = () => {
   return (
     <div className={s.wrapper}>
       <section className={s.sidebar}>
-        <SearchBar handleSearchTasks={handleSearchTasks} />
+        <header className={s.header}>
+          <SearchBar handleSearchTasks={handleSearchTasks} />
+          <button className={s.button}>Settings</button>
+        </header>
         {isSearchActive ? (
           <SearchList searchValue={searchValue} />
         ) : (

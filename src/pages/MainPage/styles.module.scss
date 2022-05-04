@@ -16,3 +16,16 @@
   flex-direction: column;
   row-gap: var(--gap-s);
 }
+.header {
+  display: flex;
+  column-gap: var(--gap-s);
+}
+.button {
+  background-color: var(--color-card);
+  border: none;
+  border-radius: var(--radius-card);
+  color: white;
+  word-wrap: break-word;
+  padding: 0 1rem;
+  cursor: pointer;
+}
