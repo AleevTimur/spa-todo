@@ -6,6 +6,7 @@ import s from "./styles.module.scss";
 import { TasksList } from "organisms/TasksList/TasksList";
 import { SearchBar } from "molecules/SearchBar/SearchBar";
 import { SearchList } from "organisms/TasksList/SearchList";
+import { SortButton } from "molecules/SortButton/SortButton";
 
 export const MainPage = () => {
   const [isSearchActive, setIsSearchActive] = useState(false);
@@ -41,7 +42,7 @@ export const MainPage = () => {
       <section className={s.sidebar}>
         <header className={s.header}>
           <SearchBar handleSearchTasks={handleSearchTasks} />
-          <button className={s.button}>Settings</button>
+          <SortButton />
         </header>
         {isSearchActive ? (
           <SearchList searchValue={searchValue} />

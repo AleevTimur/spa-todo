@@ -1,0 +1,16 @@
+.button {
+  border: none;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  text-decoration: none;
+  padding: 0.5em 1em;
+}
+.accent {
+  background-color: var(--color-accent);
+  border-radius: var(--radius-btn);
+}
+.card {
+  background-color: var(--color-card);
+  border-radius: var(--radius-card);
+}

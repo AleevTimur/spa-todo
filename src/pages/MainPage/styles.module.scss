@@ -17,7 +17,8 @@
   row-gap: var(--gap-s);
 }
 .header {
-  display: flex;
+  display: grid;
+  grid-template-columns: auto min-content;
   column-gap: var(--gap-s);
 }
 .button {
