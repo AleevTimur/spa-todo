@@ -30,7 +30,12 @@ export const MainPage = () => {
       <div className={s.wrapper}>
         <section className={s.sidebar}>
           <header className={s.header}>
-            <SearchBar handleToggleSearchList={handleSearchTasks} />
+            <SearchBar
+              handleSearchTasks={handleSearchTasks}
+              handleSetModalWidth={handleSetModalWidth}
+            />
+
+            <SortButton modalWidth={modalWidth} />
           </header>
           {isSearchActive ? (
             <SearchList searchValue={searchValue} />

@@ -13,8 +13,11 @@ import {
   addMicroList,
   addMicroText,
 } from "model/store/microTasks/actionCreators";
+import { Button } from "atoms/Button/Button";
+import { useNavigate } from "react-router-dom";
 
 export const TaskPage = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const currentTaskPage = useGetCurrentTaskPage();
   const currentMicroTasks = useGetMicroTasks(currentTaskPage?.id);
@@ -36,6 +39,9 @@ export const TaskPage = () => {
       })
     );
   };
+  const onGoBack = () => {
+    navigate("/");
+  };
 
   if (!currentTaskPage) {
     return null;
@@ -44,13 +50,18 @@ export const TaskPage = () => {
     <div className={s.wrapper}>
       <div className={s.root}>
         <header className={s.header}>
+          <div className={[s.headerButtonsLeft, s.headerButtons].join(" ")}>
+            <Button variant="card" className={s.backButton} onClick={onGoBack}>
+              Back
+            </Button>
+          </div>
           <div className={s.headerTitleContainer}>
             <EditableTitle
               value={currentTaskPage.title}
               pageId={currentTaskPage.id}
             />
           </div>
-          <div className={s.headerButtonsContainer}>
+          <div className={[s.headerButtonsRight, s.headerButtons].join(" ")}>
             <DeadlineChanger
               deadline={currentTaskPage.deadline}
               taskId={currentTaskPage.id}
