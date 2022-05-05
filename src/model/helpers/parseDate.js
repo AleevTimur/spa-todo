@@ -1,4 +1,8 @@
-export const parseDate = (ISOString) => {
+const addZero = (number) => {
+  return number < 9 ? "0" + String(number) : number;
+};
+
+export const parseDate = (ISOString, withZero) => {
   const dateObject = new Date(ISOString);
   const getMonthName = (dateObject) => {
     const nameOfMonths = [
@@ -32,6 +36,15 @@ export const parseDate = (ISOString) => {
   const month = getMonthName(dateObject);
   const year = dateObject.getFullYear();
   const monthNumber = dateObject.getMonth() + 1;
+
+  if (withZero) {
+    return {
+      date: addZero(date),
+      monthNumber: addZero(monthNumber),
+      month,
+      year,
+    };
+  }
 
   return {
     date,

@@ -35,7 +35,7 @@ export const Task = ({ taskData, titleHeightPosition, handleChangeOrder }) => {
     handleChangeOrder();
   };
 
-  const { date, monthNumber: month } = parseDate(deadline);
+  const { date, monthNumber } = parseDate(deadline, true);
   return (
     <>
       <Reorder.Item
@@ -58,7 +58,7 @@ export const Task = ({ taskData, titleHeightPosition, handleChangeOrder }) => {
           <Link to={`/task/${id}`} className={s.title}>
             {title || "New task"}
           </Link>
-          <span className={s.date}>{`${date}/${month}`}</span>
+          <span className={s.date}>{`${date}.${monthNumber}`}</span>
         </div>
         <div className={s.buttonsGroup}>
           <button className={s.button} onClick={onDeleteTask}>
