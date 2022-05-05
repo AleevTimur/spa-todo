@@ -19,6 +19,15 @@
   cursor: grab;
   position: relative;
 }
+.content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  column-gap: 0.2rem;
+}
+.date {
+  flex-shrink: 0;
+}
 .label:active {
   cursor: grabbing;
 }

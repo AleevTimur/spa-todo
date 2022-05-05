@@ -1,6 +1,6 @@
 export const parseDate = (ISOString) => {
   const dateObject = new Date(ISOString);
-  const getMonth = (dateObject) => {
+  const getMonthName = (dateObject) => {
     const nameOfMonths = [
       "январь",
       "февраль",
@@ -29,12 +29,14 @@ export const parseDate = (ISOString) => {
   };
 
   const date = dateObject.getDate();
-  const month = getMonth(dateObject);
+  const month = getMonthName(dateObject);
   const year = dateObject.getFullYear();
+  const monthNumber = dateObject.getMonth() + 1;
 
   return {
     date,
     month,
+    monthNumber,
     year,
   };
 };

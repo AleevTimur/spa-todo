@@ -9,6 +9,7 @@ import {
   deleteTask,
 } from "model/store/mainTasks/actionCreators";
 import { useDispatch } from "react-redux";
+import { parseDate } from "model/helpers/parseDate";
 
 const { checkbox, checkboxDone } = s;
 
@@ -16,7 +17,7 @@ export const Task = ({ taskData, titleHeightPosition, handleChangeOrder }) => {
   const dispatch = useDispatch();
   const controls = useDragControls();
 
-  const { id, title, isCompleted } = taskData;
+  const { id, title, isCompleted, deadline } = taskData;
 
   const onDeleteTask = () => {
     dispatch(deleteTask(id));
@@ -33,6 +34,8 @@ export const Task = ({ taskData, titleHeightPosition, handleChangeOrder }) => {
     }
     handleChangeOrder();
   };
+
+  const { date, monthNumber: month } = parseDate(deadline);
   return (
     <>
       <Reorder.Item
@@ -51,9 +54,12 @@ export const Task = ({ taskData, titleHeightPosition, handleChangeOrder }) => {
             className={isCompleted ? checkboxDone : checkbox}
             onDoubleClick={onDoneTask}></div>
         </label>
-        <Link to={`/task/${id}`} className={s.title}>
-          {title || "New task"}
-        </Link>
+        <div className={s.content}>
+          <Link to={`/task/${id}`} className={s.title}>
+            {title || "New task"}
+          </Link>
+          <span className={s.date}>{`${date}/${month}`}</span>
+        </div>
         <div className={s.buttonsGroup}>
           <button className={s.button} onClick={onDeleteTask}>
             <div className={s.iconWrapper}>
