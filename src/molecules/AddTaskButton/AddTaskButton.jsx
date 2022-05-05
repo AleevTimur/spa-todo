@@ -7,6 +7,7 @@ import s from "./styles.module.scss";
 
 import { addTask } from "model/store/mainTasks/actionCreators";
 import { addMicroText } from "model/store/microTasks/actionCreators";
+import { Button } from "atoms/Button/Button";
 
 export const AddTaskButton = () => {
   const dispatch = useDispatch();
@@ -30,8 +31,8 @@ export const AddTaskButton = () => {
   };
 
   return (
-    <button to="/new-task" className={s.root} onClick={onClick}>
+    <Button variant="accent" className={s.root} onClick={onClick}>
       Add new task
-    </button>
+    </Button>
   );
 };

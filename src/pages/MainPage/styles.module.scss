@@ -21,12 +21,3 @@
   grid-template-columns: auto min-content;
   column-gap: var(--gap-s);
 }
-.button {
-  background-color: var(--color-card);
-  border: none;
-  border-radius: var(--radius-card);
-  color: white;
-  word-wrap: break-word;
-  padding: 0 1rem;
-  cursor: pointer;
-}

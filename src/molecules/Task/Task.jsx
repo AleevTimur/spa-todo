@@ -10,6 +10,7 @@ import {
 } from "model/store/mainTasks/actionCreators";
 import { useDispatch } from "react-redux";
 import { parseDate } from "model/helpers/parseDate";
+import { Button } from "atoms/Button/Button";
 
 const { checkbox, checkboxDone } = s;
 
@@ -61,7 +62,7 @@ export const Task = ({ taskData, titleHeightPosition, handleChangeOrder }) => {
           <span className={s.date}>{`${date}.${monthNumber}`}</span>
         </div>
         <div className={s.buttonsGroup}>
-          <button className={s.button} onClick={onDeleteTask}>
+          <Button variant="minimal" className={s.button} onClick={onDeleteTask}>
             <div className={s.iconWrapper}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -77,7 +78,7 @@ export const Task = ({ taskData, titleHeightPosition, handleChangeOrder }) => {
                 />
               </svg>
             </div>
-          </button>
+          </Button>
         </div>
       </Reorder.Item>
     </>

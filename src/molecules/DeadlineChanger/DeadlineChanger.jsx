@@ -9,6 +9,7 @@ import "./calendar.scss";
 import { parseDate } from "model/helpers/parseDate";
 import { changeDeadlineDate } from "model/store/mainTasks/actionCreators";
 import { useOnClickOutside } from "model/hooks/useOnClickOutside";
+import { Button } from "atoms/Button/Button";
 
 export const DeadlineChanger = ({ deadline, taskId }) => {
   const calendarRef = useRef(null);
@@ -21,8 +22,8 @@ export const DeadlineChanger = ({ deadline, taskId }) => {
   const onCloseCalendar = () => {
     setIsOpenCalendar(false);
   };
-  useOnClickOutside(calendarRef, useCallback(onCloseCalendar, []));
 
+  useOnClickOutside(calendarRef, useCallback(onCloseCalendar, []));
   const onChangeDate = (value) => {
     dispatch(changeDeadlineDate(taskId, value.toISOString()));
     setIsOpenCalendar(false);
@@ -31,10 +32,11 @@ export const DeadlineChanger = ({ deadline, taskId }) => {
   const { date, month, year } = parseDate(deadline);
 
   return (
-    <>
-      <button onClick={onToggleCalendar} className={s.button} ref={calendarRef}>
-        {`${date} ${month} ${year}`}
-      </button>
+    <div ref={calendarRef} className={s.buttonContainer}>
+      <Button
+        onClick={onToggleCalendar}
+        variant="card"
+        style={{ height: "100%" }}>{`${date} ${month} ${year}`}</Button>
       {isOpenCalendar && (
         <Calendar
           className={s.calendarRoot}
@@ -42,7 +44,7 @@ export const DeadlineChanger = ({ deadline, taskId }) => {
           defaultValue={new Date(deadline)}
         />
       )}
-    </>
+    </div>
   );
 };
 DeadlineChanger.propTypes = {

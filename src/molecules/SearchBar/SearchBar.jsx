@@ -1,3 +1,4 @@
+import { Button } from "atoms/Button/Button";
 import cn from "classnames";
 import React, { useEffect, useRef, useState } from "react";
 
@@ -38,7 +39,7 @@ export const SearchBar = ({ handleSearchTasks, handleSetModalWidth }) => {
         onFocus={onFocus}
         onBlur={onBlur}
       />
-      <button className={s.button}>
+      <Button variant="minimal">
         <div className={s.iconWrapper}>
           <svg
             className={s.icon}
@@ -54,7 +55,7 @@ export const SearchBar = ({ handleSearchTasks, handleSetModalWidth }) => {
             />
           </svg>
         </div>
-      </button>
+      </Button>
     </div>
   );
 };

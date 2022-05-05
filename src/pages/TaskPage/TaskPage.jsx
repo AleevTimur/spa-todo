@@ -74,16 +74,16 @@ export const TaskPage = () => {
             currentPageId={currentTaskPage.id}
           />
           <div className={s.buttonsGroup}>
-            <button
+            <Button
               className={[s.button, s.button_left].join(" ")}
               onClick={createList}>
               Add list
-            </button>
-            <button
+            </Button>
+            <Button
               className={[s.button, s.button_right].join(" ")}
               onClick={createTextarea}>
               Add text
-            </button>
+            </Button>
           </div>
         </div>
       </div>

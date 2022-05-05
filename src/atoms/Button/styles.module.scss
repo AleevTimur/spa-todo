@@ -5,6 +5,7 @@
   cursor: pointer;
   text-decoration: none;
   padding: 0.5em 1em;
+  word-wrap: break-word;
 }
 .accent {
   background-color: var(--color-accent);
@@ -13,4 +14,7 @@
 .card {
   background-color: var(--color-card);
   border-radius: var(--radius-card);
+}
+.minimal {
+  padding: 0;
 }
